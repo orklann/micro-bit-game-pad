@@ -10,8 +10,6 @@
     "files": [
         "README.md",
         "extension.cpp",
-        "TemperatureSensorService.cpp",
-        "TemperatureSensorService.h",
         "shims.d.ts",
         "enums.d.ts"
     ],
