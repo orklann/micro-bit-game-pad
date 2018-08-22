@@ -1,0 +1,22 @@
+{
+    "name": "ble-device-name",
+    "version": "0.0.0",
+    "description": "Microbit Bluetooth package to change BLE device name",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*",
+        "radio": "*"
+    },
+    "files": [
+        "README.md",
+        "main.ts",
+        "extension.cpp",
+        "extension.ts",
+        "shims.d.ts",
+        "enums.d.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": false
+}
