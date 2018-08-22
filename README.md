@@ -1,4 +1,4 @@
-# ble-device-name
+# ble-device-name-aaron
 
 Microbit Bluetooth package to change BLE device name
 
@@ -21,4 +21,3 @@ MIT
 
 * for PXT/microbit
 (The metadata above is needed for package search.)
-
