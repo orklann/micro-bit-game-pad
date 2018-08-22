@@ -1,10 +1,13 @@
 #include "pxt.h"
+#include "MicroBitConfig.h"
+#include "ble/BLE.h"
+#include "MicroBitThermometer.h"
+#include "EventModel.h"
 
 namespace bluetooth {
-    /**
+     /**
      * A function to changer Microbit bluetooth device name
      */
-
      //% blockId=bluetooth_setBLEDeviceName block="bluetooth set device name %name"
      void setBLEDeviceName(StringData *name) {
          ManagedString s(name);
