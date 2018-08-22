@@ -8,7 +8,6 @@ namespace bluetooth {
     /**
      * A function to changer Microbit bluetooth device name
      */
-
     //% blockId=bluetooth_setDeviceName_aaron_edition block="bluetooth set device name %name"
     void setDeviceName(StringData *name) {
         ManagedString s(name);
