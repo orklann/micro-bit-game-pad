@@ -1,13 +1,18 @@
 #include "pxt.h"
+#include "MicroBitConfig.h"
+#include "ble/BLE.h"
+#include <string.h>
+
 using namespace pxt;
 
-/**
- * A function to changer Microbit bluetooth device name
- */
-
 namespace bluetooth {
+    /**
+     * A function to changer Microbit bluetooth device name
+     */
+
     //% blockId=bluetooth_setDeviceName block="bluetooth set device name %name"
-    void setDeviceName(char *name) {
-        (*uBit.ble).gap().setDeviceName((const uint8_t *)name);
+    void setDeviceName(StringData *name) {
+        ManagedString s(name);
+        (*uBit.ble).gap().setDeviceName((const uint8_t *)s.toCharArray());
     }
 }
