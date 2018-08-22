@@ -12,12 +12,13 @@ namespace bluetooth {
     //% blockId=bluetooth_setDeviceName block="bluetooth set device name %name"
     void setDeviceName(StringData *name) {
         ManagedString s(name);
-        (*uBit.ble).gap().setDeviceName((const uint8_t *)s.toCharArray());
+        //(*uBit.ble).gap().setDeviceName((const uint8_t *)s.toCharArray());
+        uBit.display.scroll(s, 1);
     }
 }
 
 
-namespace basic {
+namespace basic {f
     /**
      * A function to show "Microbit
      */
