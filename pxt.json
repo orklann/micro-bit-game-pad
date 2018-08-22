@@ -1,5 +1,5 @@
 {
-    "name": "ble-device-name",
+    "name": "ble-device-name-aaron",
     "version": "0.0.1",
     "description": "Microbit Bluetooth package to change BLE device name",
     "license": "MIT",
