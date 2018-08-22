@@ -4,8 +4,8 @@ declare namespace bluetooth {
     /**
      * A function to changer Microbit bluetooth device name
      */
-    //% blockId=bluetooth_setDeviceName_aaron_edition block="bluetooth set device name %name" shim=bluetooth::setDeviceName
-    function setDeviceName(name: string): void;
+    //% blockId=bluetooth_setBLEDeviceName block="bluetooth set device name %name" shim=bluetooth::setBLEDeviceName
+    function setBLEDeviceName(name: string): void;
 }
 declare namespace basic {
 
