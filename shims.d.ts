@@ -7,5 +7,13 @@ declare namespace bluetooth {
     //% blockId=bluetooth_setBLEDeviceName block="bluetooth set device name %name" shim=bluetooth::setBLEDeviceName
     function setBLEDeviceName(name: string): void;
 }
+declare namespace basic {
+
+    /**
+     * A function to show my name
+     */
+    //% blockId=bluetooth_showMyName block="basic show my name %name" shim=basic::setMyName
+    function setMyName(name: string): void;
+}
 
 // Auto-generated. Do not edit. Really.
