@@ -2,7 +2,7 @@
     "name": "Untitled",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "ble-device-name-aaron": "github:orklann/pxt-ble-device-name-aaron#v0.0.3"
     },
     "description": "",
     "files": [
