@@ -6,8 +6,8 @@
      */
 
 declare namespace bluetooth {
-    //% blockId=bluetooth_setDeviceName block="bluetooth set device name %name" shim=bluetooth::setDeviceName
-    function setDeviceName(name: string): void;
+    //% blockId=bluetooth_startTemperatureSensorService block="bluetooth temperature sensor service" shim=bluetooth::startTemperatureSensorService
+    function startTemperatureSensorService(handler: () => void): void;
 }
 
 // Auto-generated. Do not edit. Really.
