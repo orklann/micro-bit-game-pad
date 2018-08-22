@@ -2,18 +2,17 @@
 declare namespace bluetooth {
 
     /**
-     * A function to changer Microbit bluetooth device name
+     * Starts a custom sensor service. The handler must call ``setSensorTemperature``
+     * to update the temperature sent to the service.
      */
-    //% blockId=bluetooth_setBLEDeviceName block="bluetooth set device name %name" shim=bluetooth::setBLEDeviceName
-    function setBLEDeviceName(name: string): void;
-}
-declare namespace basic {
+    //% blockId=bluetooth_startTemperatureSensorService block="bluetooth temperature sensor service" shim=bluetooth::startTemperatureSensorService
+    function startTemperatureSensorService(handler: () => void): void;
 
     /**
-     * A function to show "Microbit
+     * Sets the current temperature value on the external temperature sensor
      */
-    //% blockId=basic_showMyName block="basic show my name %name" shim=basic::showMyName
-    function showMyName(name: string): void;
+    //% blockId=bluetooth_setTemperatureSensorValue block="bluetooth set temperature sensor value (°C) %temperature" shim=bluetooth::setTemperatureSensorValue
+    function setTemperatureSensorValue(temperature: number): void;
 }
 
 // Auto-generated. Do not edit. Really.

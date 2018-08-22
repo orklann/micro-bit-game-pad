@@ -1,31 +1,42 @@
 #include "pxt.h"
-#include "MicroBitConfig.h"
-#include "ble/BLE.h"
-
-using namespace pxt;
+#include "TemperatureSensorService.h"
 
 namespace bluetooth {
-    /**
-     * A function to changer Microbit bluetooth device name
-     */
+    TemperatureSensorService* _pService = NULL;
+    Action _handler;
 
-    //% blockId=bluetooth_setBLEDeviceName block="bluetooth set device name %name"
-    void setBLEDeviceName(StringData *name) {
-        ManagedString s(name);
-        //(*uBit.ble).gap().setDeviceName((const uint8_t *)s.toCharArray());
-        uBit.display.scroll(s, 1);
+    void updateTemperature() {
+        while (NULL != _pService) {
+            // run action that updates the temperature
+            pxt::runAction0(_handler);
+            // raise event to trigger notification
+            MicroBitEvent ev(MICROBIT_ID_SENSOR_TEMPERATURE, MICROBIT_THERMOMETER_EVT_UPDATE);
+            // wait period
+            fiber_sleep(_pService->getPeriod());
+        }
     }
-}
 
-
-namespace basic {
     /**
-     * A function to show "Microbit
-     */
+    * Starts a custom sensor service. The handler must call ``setSensorTemperature``
+    * to update the temperature sent to the service.
+    */
+    //% blockId=bluetooth_startTemperatureSensorService block="bluetooth temperature sensor service"
+    void startTemperatureSensorService(Action handler) {
+        if (NULL != _pService) return;
 
-    //% blockId=basic_showMyName block="basic show my name %name"
-    void showMyName(StringData *name) {
-        ManagedString s(name);
-        uBit.display.scroll(s, 1);
+        _pService = new TemperatureSensorService(*uBit.ble);
+        _handler = handler;
+        pxt::incr(_handler);
+        create_fiber(updateTemperature);
+    }
+
+    /**
+    * Sets the current temperature value on the external temperature sensor
+    */
+    //% blockId=bluetooth_setTemperatureSensorValue block="bluetooth set temperature sensor value (°C) %temperature"
+    void setTemperatureSensorValue(int temperature) {
+        if (NULL == _pService) return;
+
+        _pService->setTemperature(temperature);
     }
 }
