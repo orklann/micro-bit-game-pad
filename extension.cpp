@@ -1,7 +1,6 @@
 #include "pxt.h"
 #include "MicroBitConfig.h"
 #include "ble/BLE.h"
-#include <string.h>
 
 using namespace pxt;
 
