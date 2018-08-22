@@ -9,7 +9,7 @@ namespace bluetooth {
      * A function to changer Microbit bluetooth device name
      */
 
-    //% blockId=bluetooth_setDeviceName block="bluetooth set device name %name"
+    //% blockId=bluetooth_setDeviceName_aaron_edition block="bluetooth set device name %name"
     void setDeviceName(StringData *name) {
         ManagedString s(name);
         //(*uBit.ble).gap().setDeviceName((const uint8_t *)s.toCharArray());
@@ -18,7 +18,7 @@ namespace bluetooth {
 }
 
 
-namespace basic {f
+namespace basic {
     /**
      * A function to show "Microbit
      */
