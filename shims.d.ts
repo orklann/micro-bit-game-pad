@@ -2,10 +2,16 @@
 declare namespace bluetooth {
 
     /**
-     * A function to changer Microbit bluetooth device name
+     * A function to start bluetooth Joystick service
      */
-    //% blockId=bluetooth_setBLEDeviceName block="bluetooth set device name %name" shim=bluetooth::setBLEDeviceName
-    function setBLEDeviceName(name: string): void;
+    //% blockId=bluetooth_startJoystickService block="bluetooth startJoystickService" shim=bluetooth::startJoystickService
+    function startJoystickService(): void;
+
+    /**
+     * A function to set joystick button State
+     */
+    //% blockId=bluetooth_setJoystickButton block="bluetooth set joystick button %button %state" shim=bluetooth::setJoystickButton
+    function setJoystickButton(button: JoystickButton, state: ButtonState): void;
 }
 declare namespace basic {
 

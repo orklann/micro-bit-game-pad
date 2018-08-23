@@ -10,6 +10,11 @@
     "files": [
         "README.md",
         "extension.cpp",
+        "HIDServiceBase.cpp",
+        "HIDServiceBase.h",
+        "JoystickService.cpp",
+        "JoystickService.h",
+        "USBHID_Types.h",
         "shims.d.ts",
         "enums.d.ts"
     ],
