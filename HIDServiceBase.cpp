@@ -161,7 +161,37 @@ HIDServiceBase::HIDServiceBase(BLE          &_ble,
     inputReportCharacteristic.requireSecurity(securityMode);
     outputReportCharacteristic.requireSecurity(securityMode);
     featureReportCharacteristic.requireSecurity(securityMode);
+
+    startAdvertise();
 }
+
+void HIDServiceBase::startAdvertise()
+{
+    ble.gap().stopAdvertising();
+    ble.gap().clearAdvertisingPayload();
+
+    ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED |
+                                      GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
+
+    ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
+
+    ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::JOYSTICK);
+
+    uint16_t minInterval = Gap::MSEC_TO_GAP_DURATION_UNITS(25);
+    if (minInterval < 6)
+    {
+        minInterval = 6;
+    }
+    uint16_t maxInterval = minInterval * 2;
+    Gap::ConnectionParams_t params = {minInterval, maxInterval, 0, 3200}; // timeout in 32 seconds
+    ble.gap().setPreferredConnectionParams(&params);
+    ble.gap().setDeviceName((const uint8_t *)"Micro Gamepad");
+    ble.gap().setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
+    ble.gap().setAdvertisingInterval(50);
+    ble.gap().setAdvertisingPolicyMode(Gap::ADV_POLICY_IGNORE_WHITELIST);
+    ble.gap().startAdvertising();
+}
+
 
 void HIDServiceBase::startReportTicker(void) {
     if (reportTickerIsActive)

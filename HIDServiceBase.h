@@ -22,6 +22,9 @@
 #include "ble/BLE.h"
 #include "USBHID_Types.h"
 
+static const uint16_t uuid16_list[] = {GattService::UUID_HUMAN_INTERFACE_DEVICE_SERVICE,
+                                       GattService::UUID_DEVICE_INFORMATION_SERVICE};
+
 #define BLE_UUID_DESCRIPTOR_REPORT_REFERENCE 0x2908
 
 typedef const uint8_t report_map_t[];
@@ -83,6 +86,10 @@ public:
                    uint8_t outputReportLength = 0,
                    uint8_t featureReportLength = 0,
                    uint8_t inputReportTickerDelay = 50);
+
+
+    /** GAP start advertise **/
+    void startAdvertise();
 
     /**
      *  Send Report

@@ -20,19 +20,6 @@ JoystickService::JoystickService(BLE &_ble) :
     speed[1] = 0;
     speed[2] = 0;
     speed[3] = 0;
-
-    // GAP advertise
-    ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::JOYSTICK);
-
-    ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME,
-                                       (const uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
-    ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::SHORTENED_LOCAL_NAME,
-                                       (const uint8_t *)SHORT_DEVICE_NAME, sizeof(SHORT_DEVICE_NAME));
-
-    ble.gap().setDeviceName((const uint8_t *)DEVICE_NAME);
-
-
-    ble.gap().startAdvertising();
     startReportTicker();
 }
 
