@@ -92,6 +92,8 @@ HIDServiceBase::HIDServiceBase(BLE          &_ble,
 {
     // HID Device Information Service
     // Device Information Service
+    // Note: This HID Device Infomation Service make Micro Bit recognized as
+    //       a Joystick by OpenEmu, But button not detected by OpenEmu
     PnPID_t pnpID;
     pnpID.vendorID_source = 0x2;
     pnpID.vendorID = 0x0D28;
