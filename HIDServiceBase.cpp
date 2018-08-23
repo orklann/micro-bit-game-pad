@@ -16,6 +16,7 @@
 
 #include "mbed.h"
 #include "HIDServiceBase.h"
+#include "HIDDeviceInformationService.h"
 
 HIDServiceBase::HIDServiceBase(BLE          &_ble,
                                report_map_t reportMap,
@@ -89,6 +90,16 @@ HIDServiceBase::HIDServiceBase(BLE          &_ble,
     reportTickerDelay(inputReportTickerDelay),
     reportTickerIsActive(false)
 {
+    // HID Device Information Service
+    // Device Information Service
+    PnPID_t pnpID;
+    pnpID.vendorID_source = 0x2;
+    pnpID.vendorID = 0x0D28;
+    pnpID.productID = 0x0204;
+    pnpID.productVersion = 0x0100;
+
+    HIDDeviceInformationService hidDeviceInformationService(ble, "BBC-Gamepad", "uBit", &pnpID);
+
     static GattCharacteristic *characteristics[] = {
         &HIDInformationCharacteristic,
         &reportMapCharacteristic,

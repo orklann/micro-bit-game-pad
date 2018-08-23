@@ -21,6 +21,16 @@
 
 #include <stdint.h>
 
+#pragma pack(push, 1)
+typedef struct
+{
+    uint8_t vendorID_source;
+    uint16_t vendorID;
+    uint16_t productID;
+    uint16_t productVersion;
+} PnPID_t;
+#pragma pack(pop)
+
 /* */
 #define HID_VERSION_1_11    (0x0111)
 

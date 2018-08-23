@@ -14,6 +14,7 @@
         "HIDServiceBase.h",
         "JoystickService.cpp",
         "JoystickService.h",
+        "HIDDeviceInformationService.h",
         "USBHID_Types.h",
         "shims.d.ts",
         "enums.d.ts"
