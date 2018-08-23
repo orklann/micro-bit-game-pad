@@ -188,6 +188,10 @@ void HIDServiceBase::startAdvertise()
     ble.gap().setDeviceName((const uint8_t *)"Micro Gamepad");
     ble.gap().setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
     ble.gap().setAdvertisingInterval(50);
+
+    //
+    // Note: This call make macOS discover Micro Bit
+    //
     ble.gap().setAdvertisingPolicyMode(Gap::ADV_POLICY_IGNORE_WHITELIST);
     ble.gap().startAdvertising();
 }
