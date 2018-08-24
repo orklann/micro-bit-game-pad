@@ -9,7 +9,7 @@ JoystickService::JoystickService(BLE &_ble) :
                    inputReport          = joystick_report,
                    outputReport         = NULL,
                    featureReport        = NULL,
-                   inputReportLength    = sizeof(inputReport),
+                   inputReportLength    = sizeof(joystick_report),
                    outputReportLength   = 0,
                    featureReportLength  = 0,
                    reportTickerDelay    = 20),
@@ -20,7 +20,7 @@ JoystickService::JoystickService(BLE &_ble) :
     speed[1] = 0;
     speed[2] = 0;
     speed[3] = 0;
-    startReportTicker();
+    //startReportTicker();
 }
 
 int JoystickService::setSpeed(int8_t x, int8_t y, int8_t z)
@@ -39,6 +39,7 @@ int JoystickService::setButton(JoystickButton button, ButtonState state)
     else
         buttonsState |= button;
 
+    sendCallback();
     return 0;
 }
 
@@ -46,7 +47,7 @@ void JoystickService::sendCallback(void) {
     if (!connected)
         return;
 
-    joystick_report[0] = buttonsState & 0x7;
+    joystick_report[0] = 0x02;   //buttonsState & 0x7;
     joystick_report[1] = speed[0];
     joystick_report[2] = speed[1];
     joystick_report[3] = speed[2];

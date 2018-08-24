@@ -169,6 +169,7 @@ HIDServiceBase::HIDServiceBase(BLE          &_ble,
     inputReportCharacteristic.requireSecurity(securityMode);
     outputReportCharacteristic.requireSecurity(securityMode);
     featureReportCharacteristic.requireSecurity(securityMode);
+    HIDInformationCharacteristic.requireSecurity(securityMode);
 
     startAdvertise();
 }
@@ -177,6 +178,14 @@ void HIDServiceBase::startAdvertise()
 {
     ble.gap().stopAdvertising();
     ble.gap().clearAdvertisingPayload();
+
+    /*
+     * macOS & openEmu reponse to MicroBit Gamepad buttons with these 3 lines of code
+    */
+    bool enableBonding = true;
+    bool requireMITM   = true;
+
+    ble.securityManager().init(enableBonding, requireMITM, SecurityManager::IO_CAPS_NONE);
 
     ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED |
                                       GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
@@ -210,7 +219,7 @@ void HIDServiceBase::stopReportTicker(void) {
 }
 
 void HIDServiceBase::onDataSent(unsigned count) {
-    startReportTicker();
+    //startReportTicker();
 }
 
 GattAttribute** HIDServiceBase::inputReportDescriptors() {
