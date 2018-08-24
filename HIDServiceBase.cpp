@@ -17,6 +17,8 @@
 #include "mbed.h"
 #include "HIDServiceBase.h"
 #include "HIDDeviceInformationService.h"
+#include "ble/services/BatteryService.h"
+#include "ble/services/DeviceInformationService.h"
 
 HIDServiceBase::HIDServiceBase(BLE          &_ble,
                                report_map_t reportMap,
@@ -102,6 +104,9 @@ HIDServiceBase::HIDServiceBase(BLE          &_ble,
 
     HIDDeviceInformationService hidDeviceInformationService(ble, "BBC-Gamepad", "uBit", &pnpID);
 
+    // Add Battery Service make Micro Bit show on device list on MacOS
+    BatteryService batteryInfo(ble, 80);
+
     static GattCharacteristic *characteristics[] = {
         &HIDInformationCharacteristic,
         &reportMapCharacteristic,
@@ -135,7 +140,8 @@ HIDServiceBase::HIDServiceBase(BLE          &_ble,
     GattService service(GattService::UUID_HUMAN_INTERFACE_DEVICE_SERVICE,
                         characteristics, charIndex);
 
-    ble.gattServer().addService(service);
+    ble.addService(service);
+    //ble.gattServer().addService(service);
 
     ble.gap().onConnection(this, &HIDServiceBase::onConnection);
     ble.gap().onDisconnection(this, &HIDServiceBase::onDisconnection);
@@ -179,14 +185,6 @@ void HIDServiceBase::startAdvertise()
 
     ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::JOYSTICK);
 
-    uint16_t minInterval = Gap::MSEC_TO_GAP_DURATION_UNITS(25);
-    if (minInterval < 6)
-    {
-        minInterval = 6;
-    }
-    uint16_t maxInterval = minInterval * 2;
-    Gap::ConnectionParams_t params = {minInterval, maxInterval, 0, 3200}; // timeout in 32 seconds
-    ble.gap().setPreferredConnectionParams(&params);
     ble.gap().setDeviceName((const uint8_t *)"Micro Gamepad");
     ble.gap().setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
     ble.gap().setAdvertisingInterval(50);

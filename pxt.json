@@ -22,5 +22,15 @@
     "testFiles": [
         "test.ts"
     ],
-    "public": true
+    "public": true,
+    "yotta": {
+        "config": {
+            "microbit-dal": {
+                "bluetooth": {
+                    "security_level": "SECURITY_MODE_ENCRYPTION_NO_MITM"
+                },
+                "gatt_table_size": "0x700"
+            }
+        }
+    }
 }

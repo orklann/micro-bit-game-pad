@@ -22,8 +22,9 @@
 #include "ble/BLE.h"
 #include "USBHID_Types.h"
 
-static const uint16_t uuid16_list[] = {GattService::UUID_HUMAN_INTERFACE_DEVICE_SERVICE,
-                                       GattService::UUID_DEVICE_INFORMATION_SERVICE};
+static const uint16_t uuid16_list[] =  {GattService::UUID_HUMAN_INTERFACE_DEVICE_SERVICE,
+    GattService::UUID_DEVICE_INFORMATION_SERVICE,
+    GattService::UUID_BATTERY_SERVICE};
 
 #define BLE_UUID_DESCRIPTOR_REPORT_REFERENCE 0x2908
 
