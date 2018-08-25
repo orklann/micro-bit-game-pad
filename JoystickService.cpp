@@ -48,7 +48,7 @@ void JoystickService::pressButton(JoystickButton button) {
 
     // wait for a little time to send button release report
     // This fix: OpenEmu in game button not work
-    wait(0.100);
+    wait(0.050);
 
     joystick_report[0] = 0x00;   // release button
     joystick_report[1] = speed[0];
