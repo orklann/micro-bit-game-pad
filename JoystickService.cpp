@@ -33,17 +33,6 @@ int JoystickService::setSpeed(int8_t x, int8_t y, int8_t z)
     return 0;
 }
 
-int JoystickService::setButton(JoystickButton button, ButtonState state)
-{
-    if (state == BUTTON_UP)
-        buttonsState &= ~(button);
-    else
-        buttonsState |= button;
-
-    sendCallback();
-    return 0;
-}
-
 void JoystickService::pressButton(JoystickButton button) {
     if (!connected)
         return ;
@@ -74,24 +63,5 @@ void JoystickService::pressButton(JoystickButton button) {
 }
 
 void JoystickService::sendCallback(void) {
-    if (!connected)
-        return;
-
-    joystick_report[0] = 0x02;   //buttonsState & 0x7;
-    joystick_report[1] = speed[0];
-    joystick_report[2] = speed[1];
-    joystick_report[3] = speed[2];
-    joystick_report[4] = speed[3];
-
-    if (send(joystick_report))
-        failedReports++;
-
-    joystick_report[0] = 0x00;   //buttonsState & 0x7;
-    joystick_report[1] = speed[0];
-    joystick_report[2] = speed[1];
-    joystick_report[3] = speed[2];
-    joystick_report[4] = speed[3];
-
-    if (send(joystick_report))
-        failedReports++;
+    // Empty not code
 }
