@@ -185,7 +185,7 @@ void HIDServiceBase::startAdvertise()
     bool enableBonding = true;
     bool requireMITM   = true;
 
-    ble.securityManager().init(enableBonding, requireMITM, SecurityManager::IO_CAPS_NONE);
+    //ble.securityManager().init(enableBonding, requireMITM, SecurityManager::IO_CAPS_NONE);
 
     ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED |
                                       GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
