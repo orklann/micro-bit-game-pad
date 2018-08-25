@@ -18,16 +18,6 @@ namespace bluetooth {
      }
 
      /**
-     * A function to set joystick button State
-     */
-     //% blockId=bluetooth_setJoystickButton block="bluetooth set joystick button %button %state"
-     void setJoystickButton(JoystickButton button, ButtonState state) {
-        if (NULL == _pService) return ;
-
-        _pService->setButton(button, state);
-     }
-
-     /**
      * A function to press joystick button
      */
      //% blockId=bluetooth_pressJoystickButton block="bluetooth press joystick button %button"
