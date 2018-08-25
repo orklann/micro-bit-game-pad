@@ -1,7 +1,7 @@
 {
-    "name": "ble-device-name-aaron",
+    "name": "BLE Gamepad package for Micro:Bit",
     "version": "1.0.9",
-    "description": "Microbit Bluetooth package to change BLE device name",
+    "description": "Microbit Bluetooth package to make MicroBit as a two button gamepad",
     "license": "MIT",
     "dependencies": {
         "core": "*",
