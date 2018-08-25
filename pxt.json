@@ -1,6 +1,6 @@
 {
     "name": "BLE-Microbit-Gamepad",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "Microbit Bluetooth package to make MicroBit as a two button gamepad",
     "license": "MIT",
     "dependencies": {
