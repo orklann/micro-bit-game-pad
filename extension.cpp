@@ -27,15 +27,3 @@ namespace bluetooth {
         _pService->pressButton(button);
      }
 }
-
-
-namespace basic {
-    /**
-    * A function to show my name
-    */
-    //% blockId=bluetooth_showMyName block="basic show my name %name"
-    void setMyName(StringData *name) {
-        ManagedString s(name);
-        uBit.display.scroll(s, 1);
-    }
-}

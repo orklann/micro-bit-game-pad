@@ -13,13 +13,5 @@ declare namespace bluetooth {
     //% blockId=bluetooth_pressJoystickButton block="bluetooth press joystick button %button" shim=bluetooth::pressJoystickButton
     function pressJoystickButton(button: JoystickButton): void;
 }
-declare namespace basic {
-
-    /**
-     * A function to show my name
-     */
-    //% blockId=bluetooth_showMyName block="basic show my name %name" shim=basic::setMyName
-    function setMyName(name: string): void;
-}
 
 // Auto-generated. Do not edit. Really.
