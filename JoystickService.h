@@ -74,7 +74,7 @@ public:
     int setSpeed(int8_t x, int8_t y, int8_t z);
 
     int setButton(JoystickButton button, ButtonState state);
-
+    void pressButton(JoystickButton button);
     virtual void sendCallback(void);
 protected:
     uint8_t buttonsState;

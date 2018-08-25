@@ -26,6 +26,16 @@ namespace bluetooth {
 
         _pService->setButton(button, state);
      }
+
+     /**
+     * A function to press joystick button
+     */
+     //% blockId=bluetooth_pressJoystickButton block="bluetooth press joystick button %button"
+     void pressJoystickButton(JoystickButton button) {
+        if (NULL == _pService) return ;
+
+        _pService->pressButton(button);
+     }
 }
 
 

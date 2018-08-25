@@ -12,6 +12,12 @@ declare namespace bluetooth {
      */
     //% blockId=bluetooth_setJoystickButton block="bluetooth set joystick button %button %state" shim=bluetooth::setJoystickButton
     function setJoystickButton(button: JoystickButton, state: ButtonState): void;
+
+    /**
+     * A function to press joystick button
+     */
+    //% blockId=bluetooth_pressJoystickButton block="bluetooth press joystick button %button" shim=bluetooth::pressJoystickButton
+    function pressJoystickButton(button: JoystickButton): void;
 }
 declare namespace basic {
 
