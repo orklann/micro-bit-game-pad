@@ -5,5 +5,18 @@
         "outDir": "built",
         "rootDir": "."
     },
-    "exclude": ["pxt_modules/**/*test.ts"]
+    "exclude": ["pxt_modules/**/*test.ts"],
+    "yotta": {
+        "config": {
+            "microbit-dal": {
+                "bluetooth": {
+                    "dfu_service": 0,
+                    "event_service": 0,
+                    "device_info_service": 0,
+                    "security_level": "SECURITY_MODE_ENCRYPTION_NO_MITM"
+                },
+                "gatt_table_size": "0x700"
+            }
+        }
+    }
 }
