@@ -1,8 +1,9 @@
 {
-    "name": "hello-gamepad",
+    "name": "shake",
     "dependencies": {
         "core": "*",
-        "ble-device-name-aaron": "github:orklann/micro-bit-game-pad#v1.0.6"
+        "ble-device-name-aaron": "github:orklann/micro-bit-game-pad#v1.0.6",
+        "bluetooth": "*"
     },
     "description": "",
     "files": [
