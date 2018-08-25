@@ -183,9 +183,9 @@ void HIDServiceBase::startAdvertise()
      * macOS & openEmu reponse to MicroBit Gamepad buttons with these 3 lines of code
     */
     bool enableBonding = true;
-    bool requireMITM   = true;
+    bool requireMITM   = false;
 
-    //ble.securityManager().init(enableBonding, requireMITM, SecurityManager::IO_CAPS_NONE);
+    ble.securityManager().init(enableBonding, requireMITM, SecurityManager::IO_CAPS_NONE);
 
     ble.gap().accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED |
                                       GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
