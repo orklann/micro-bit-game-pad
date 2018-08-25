@@ -1,4 +1,5 @@
 #include "JoystickService.h"
+#include "mbed.h"
 
 uint8_t joystick_report[] = { 0, 0, 0, 0, 0 };
 
@@ -55,6 +56,10 @@ void JoystickService::pressButton(JoystickButton button) {
 
     if (send(joystick_report))
         failedReports++;
+
+    // wait for a little time to send button release report
+    // This fix: OpenEmu in game button not work
+    wait(0.100);
 
     joystick_report[0] = 0x00;   // release button
     joystick_report[1] = speed[0];
