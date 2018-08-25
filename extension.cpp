@@ -6,15 +6,21 @@
 #include "JoystickService.h"
 
 namespace bluetooth {
-     JoystickService *_pService = NULL;
+     static JoystickService *_pService = nullptr;
+
+     static JoystickService *getJoystick(){
+        if (_pService == nullptr) {
+            _pService = new JoystickService(*uBit.ble);
+        }
+        return _pService;
+     }
+
      /**
      * A function to start bluetooth Joystick service
      */
      //% blockId=bluetooth_startJoystickService block="bluetooth startJoystickService"
      void startJoystickService() {
-        if (NULL != _pService) return ;
-
-        _pService = new JoystickService(*uBit.ble);
+        getJoystick();
      }
 
      /**
@@ -22,8 +28,8 @@ namespace bluetooth {
      */
      //% blockId=bluetooth_pressJoystickButton block="bluetooth press joystick button %button"
      void pressJoystickButton(JoystickButton button) {
-        if (NULL == _pService) return ;
+        JoystickService *joystick = getJoystick();
 
-        _pService->pressButton(button);
+        joystick->pressButton(button);
      }
 }
